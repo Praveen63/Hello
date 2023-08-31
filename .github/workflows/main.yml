@@ -1,0 +1,30 @@
+name: Run Shell Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Oracle Instant Client
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libaio1
+        mkdir instantclient
+        cd instantclient
+        wget https://download.oracle.com/otn_software/linux/instantclient/193000/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip
+        unzip instantclient-basic-linux.x64-19.3.0.0.0dbru.zip
+        sudo sh -c "echo /path/to/your/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf"
+        sudo ldconfig
+
+    - name: Run Shell Script
+      run: |
+        chmod +x script.sh
+        ./script.sh
