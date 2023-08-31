@@ -20,8 +20,10 @@ jobs:
         sudo apt-get install -y libaio1
         mkdir instantclient
         cd instantclient
-        wget https://download.oracle.com/otn_software/linux/instantclient/193000/instantclient-basic-linux.x64-19.3.0.0.0dbru.zip
-        unzip instantclient-basic-linux.x64-19.3.0.0.0dbru.zip
+        wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+        wget https://download.oracle.com/otn_software/linux/instantclient/214000/instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
+        unzip instantclient-basic-linux.x64-21.4.0.0.0dbru.zip
+        unzip instantclient-sqlplus-linux.x64-21.4.0.0.0dbru.zip
         sudo sh -c "echo /path/to/your/instantclient > /etc/ld.so.conf.d/oracle-instantclient.conf"
         sudo ldconfig
         sqlplus -V
