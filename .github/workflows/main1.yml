@@ -3,7 +3,7 @@ name: MySQL Shell Installation
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
