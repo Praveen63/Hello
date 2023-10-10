@@ -16,6 +16,7 @@ jobs:
     - name: Install MySQL Shell
       run: |
         sudo apt update
+        sudo snap install mysql-shell
         sudo apt install -y mysql-shell
 
     - name: Verify MySQL Shell Installation
