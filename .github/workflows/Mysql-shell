@@ -18,7 +18,7 @@ jobs:
           # Download MySQL Shell
           wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
           
-          # Extract MySQL Shell
+          # Extract MySQL Shell s
           tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
           
           # Install MySQL Shell (move to a suitable location)
