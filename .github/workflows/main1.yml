@@ -19,6 +19,4 @@ jobs:
         sudo snap install mysql-shell
        
 
-    - name: Verify MySQL Shell Installation
-      run: |
-        mysqlsh --version
+   
