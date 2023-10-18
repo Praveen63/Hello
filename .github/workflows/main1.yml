@@ -17,10 +17,14 @@ jobs:
         run: |
           # Download and install MySQL Shell
           wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          export PATH=$PATH:/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin
-          export LD_LIBRARY_PATH=mysql-shell-8.0.27-linux-glibc2.12-x86-64bit:$LD_LIBRARY_PATH
+          tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz -C $HOME
+          echo "export PATH=\$PATH:$HOME/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin" >> $HOME/.bashrc
+          source $HOME/.bashrc
           mysqlsh --version
+        shell: bash
+      - name: Debug PATH
+        run: |
+          echo "PATH = $PATH"
         shell: bash
 
       
