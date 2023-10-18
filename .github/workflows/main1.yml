@@ -1,30 +1,18 @@
-name: MySQL Shell Installation and Version Check
+name: Install and run mysqlsh --version
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
-  install-mysql-shell:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Install MySQL Shell
-        run: |
-          # Download and install MySQL Shell
-          wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz -C $HOME
-          echo "export PATH=\$PATH:$HOME/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin" >> $HOME/.bashrc
-          source $HOME/.bashrc
-          mysqlsh --version
-        shell: bash
-      - name: Debug PATH
-        run: |
-          echo "PATH = $PATH"
-        shell: bash
+      - name: Install mysqlsh
+        run: sudo apt install -y mysqlsh
 
-      
+      - name: Run mysqlsh --version
+        run: mysqlsh --version
