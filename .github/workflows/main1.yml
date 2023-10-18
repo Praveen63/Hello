@@ -18,11 +18,9 @@ jobs:
           # Download and install MySQL Shell
           wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
           tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          export PATH=$PATH:$(pwd)/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin
-        shell: bash
-
-      - name: Verify MySQL Shell Installation
-        run: |
-          # Check MySQL Shell version
+          export PATH=$PATH:$(root)/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin
+          export PATH=$PATH:/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit/bin
           mysqlsh --version
         shell: bash
+
+      
