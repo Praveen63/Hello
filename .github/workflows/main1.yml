@@ -16,11 +16,12 @@ jobs:
       - name: Download and Extract MySQL Shell
         run: |
           # Download MySQL Shell zip archive
-          wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.zip -O mysql-shell.zip
+          wget https://dev.mysql.com/downloads/gpg/?file=mysql-shell_8.0.34-1ubuntu23.04_amd64.deb&p=43
+          sudo dpkg -i mysql-shell_8.0.34-1ubuntu23.04_amd64.deb
 
           # Create a directory to extract MySQL Shell
-          mkdir -p mysql-shell
+          sudo mkdir -p /opt/mysql-shell
 
           # Extract the zip archive
-          unzip mysql-shell.zip -d mysql-shell
+          sudo unzip -d /opt/mysql-shell mysql-shell_8.0.34-1ubuntu23.04_amd64.deb
           mysqlsh --version
