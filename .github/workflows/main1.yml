@@ -13,18 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install MySQL Shell
+      - name: Download and Extract MySQL Shell
         run: |
-          # Download MySQL Shell
-          wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          
-          # Extract MySQL Shell
-          tar -xzvf mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.tar.gz
-          
-          # Install MySQL Shell (move to a suitable location)
-          mv mysql-shell-8.0.27-linux-glibc2.12-x86-64bit /usr/local/mysql-shell
-          
-          # Add MySQL Shell to PATH
-          echo 'export PATH=$PATH:/usr/local/mysql-shell/bin' >> $HOME/.bashrc
-          source $HOME/.bashrc
-        shell: bash
+          # Download MySQL Shell zip archive
+          wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell-8.0.27-linux-glibc2.12-x86-64bit.zip -O mysql-shell.zip
+
+          # Create a directory to extract MySQL Shell
+          mkdir -p mysql-shell
+
+          # Extract the zip archive
+          unzip mysql-shell.zip -d mysql-shell
+          mysqlsh --version
