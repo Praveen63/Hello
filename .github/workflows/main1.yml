@@ -11,11 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install MySQL Shell
+      - name: Install jq
         run: |
-         wget https://dev.mysql.com/get/mysql-utilities/mysql-shell-8.0.25/mysql-shell-8.0.25-linux-glibc2.12-x86-64bit.dbru -O mysql-shell.dbru
-         sudo mysqlsh --install mysql-shell.dbru
-         echo "PATH=$Path"
-         mysqlsh --version
-      - name: Run mysqlsh --version
-        run: mysqlsh --version
+          # Install jq 1.6
+          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O jq
+          chmod +x jq
+          sudo mv jq /usr/local/bin/jq
+          # Check the installed version
+          jq --version
