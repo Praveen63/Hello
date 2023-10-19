@@ -19,3 +19,13 @@ jobs:
           sudo mv jq /usr/local/bin/jq
           # Check the installed version
           jq --version
+      - name: Install gcloud
+        run: |
+          # Download and install the Google Cloud SDK
+          curl https://sdk.cloud.google.com | bash
+          
+          # Add gcloud to the PATH
+          source $HOME/google-cloud-sdk/path.bash.inc
+  
+          # Verify the installation
+          gcloud version
