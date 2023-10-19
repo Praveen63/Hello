@@ -11,12 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install mysqlsh
+      - name: Install MySQL Shell
         run: |
-          sudo apt install -y mysqlsh
-          sudo apt update
-          sudo service apt restart
-          echo "PATH=$Path"
-
+         wget https://dev.mysql.com/get/mysql-utilities/mysql-shell-8.0.25/mysql-shell-8.0.25-linux-glibc2.12-x86-64bit.dbru -O mysql-shell.dbru
+         sudo mysqlsh --install mysql-shell.dbru
+         echo "PATH=$Path"
+         mysqlsh --version
       - name: Run mysqlsh --version
         run: mysqlsh --version
