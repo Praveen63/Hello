@@ -21,11 +21,8 @@ jobs:
           jq --version
       - name: Install gcloud
         run: |
-          # Download and install the Google Cloud SDK
-          curl https://sdk.cloud.google.com | bash
-          
-          # Add gcloud to the PATH
-          # source $HOME/google-cloud-sdk/path.bash.inc
-  
-          # Verify the installation
-          gcloud version
+          echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+          sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+          gcloud --version
+        env:
+          CLOUDSDK_CORE_DISABLE_PROMPTS: 1
