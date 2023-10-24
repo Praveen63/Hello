@@ -25,7 +25,7 @@ jobs:
           curl https://sdk.cloud.google.com | bash
           
           # Add gcloud to the PATH
-          source $HOME/google-cloud-sdk/path.bash.inc
+          # source $HOME/google-cloud-sdk/path.bash.inc
   
           # Verify the installation
           gcloud version
