@@ -11,6 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install MySQL Shell Runner
+        run: |
+          wget https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell_8.0.28-1ubuntu20.04_amd64.deb
+          sudo dpkg -i mysql-shell_8.0.28-1ubuntu20.04_amd64.deb
+          sudo apt-get install -f
+
+      - name: Verify MySQL Shell Runner
+        run: mysqlsh --version
       - name: Install jq
         run: |
           # Install jq 1.6
