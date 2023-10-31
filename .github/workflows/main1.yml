@@ -10,23 +10,17 @@ jobs:
  
     steps:
       - uses: actions/checkout@v3
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v1'
-        with:
-          workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-          service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
-
-    # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-        with:
-           version: '>= 363.0.0'
-    
-      - name: 'Use gcloud CLI'
+      - name: Set up MySQL Shell Runner
         run: |
-          'gcloud info'
-          gcloud --version
+          sudo apt-get update
+          sudo apt-get install mysql-client
+          sudo apt-get install mysql-shell
+       
+      - name: Execute SQL Script
+        run: |
+          mysqlsh -u root  -p root --file=path/to/your/sql/script.sql
+          mysqlsh --version
+      
       - name: Install jq
         run: |
           # Install jq 1.6
