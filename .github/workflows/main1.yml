@@ -10,6 +10,12 @@ jobs:
  
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Install MySQL
+        uses: mirromutth/mysql-action@v1.1
+
+      - name: Check MySQL version
+        run: mysql --version
       - name: Add MySQL APT Repository
         run: |
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8C718D3B5072E1F5
