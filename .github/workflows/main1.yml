@@ -16,6 +16,30 @@ jobs:
 
       - name: Check MySQL version
         run: mysql --version
+      - name: Start MySQL in safe mode
+        run: mysqld_safe --skip-grant-tables
+
+      - name: Connect to MySQL
+        run: mysql -uroot
+
+      - name: Set root password
+        run: ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+      - name: Flush privilege tables
+        run: FLUSH PRIVILEGES;
+
+      - name: Create new superuser
+        run: CREATE USER 'new_superuser'@'localhost' IDENTIFIED BY 'new_superuser_password';
+
+      - name: Grant new superuser all privileges
+        run: GRANT ALL PRIVILEGES ON *.* TO 'new_superuser'@'localhost' WITH GRANT OPTION;
+
+      - name: Flush privilege tables
+        run: FLUSH PRIVILEGES;
+
+      - name: Stop MySQL
+        run: mysqladmin -uroot -pnew_password shutdown
+
       - name: Add MySQL APT Repository
         run: |
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8C718D3B5072E1F5
