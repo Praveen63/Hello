@@ -10,7 +10,13 @@ jobs:
  
     steps:
       - uses: actions/checkout@v3
-      
+
+      - name: Install Mysql123
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y libmysqlclient-dev
+            mysql --version
+            
       - name: Install MySQL
         uses: mirromutth/mysql-action@v1.1
 
