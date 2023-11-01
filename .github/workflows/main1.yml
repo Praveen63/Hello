@@ -16,7 +16,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y libmysqlclient-dev
             mysql --version
-            sudo apt-get install -y mysql-shell
+            sudo apt-get install -y libmysql-shell
             mysqlsh --version
             
       - name: Install MySQL
