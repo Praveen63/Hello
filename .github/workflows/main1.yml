@@ -11,12 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install libpython3.8
+        run: |
+          sudo apt-get update
+          sudo apt-get install libpython3.8 -y
       - name: Download MySQL Shell DEB Package
         run: |
           sudo apt-get update
           sudo apt-get install libffi7 -y
-          sudo apt-get update
-          sudo apt-get install -y libpython3.8
           curl -LO https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell_8.0.26-1ubuntu20.04_amd64.deb
           sudo dpkg -i mysql-shell_8.0.26-1ubuntu20.04_amd64.deb
           sudo apt-get install -f -y
