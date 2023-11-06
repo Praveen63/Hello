@@ -11,6 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Download MySQL Shell DEB Package
+        run: |
+          curl -LO https://dev.mysql.com/get/Downloads/MySQL-Shell/mysql-shell_8.0.26-1ubuntu20.04_amd64.deb
+          sudo dpkg -i mysql-shell_8.0.26-1ubuntu20.04_amd64.deb
+          sudo apt-get install -f -y
+        working-directory: ${{ github.workspace }}
+  
+      - name: Verify MySQL Shell Installation
+        run: |
+          mysqlsh --version
+In 
       - name: Install Mysql123
         run: |
             sudo apt-get update
