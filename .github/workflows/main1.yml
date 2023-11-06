@@ -21,7 +21,7 @@ jobs:
       - name: Verify MySQL Shell Installation
         run: |
           mysqlsh --version
-In 
+
       - name: Install Mysql123
         run: |
             sudo apt-get update
