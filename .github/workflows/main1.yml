@@ -10,6 +10,22 @@ jobs:
  
     steps:
       - uses: actions/checkout@v3
+      - name: Download and Install CLPPlus
+        run: |
+          # Download CLPPlus
+          wget -O clpplus.zip https://www.oracle.com/tools/downloads/sqlplus/downloads/index.html
+
+          # Unzip the downloaded file
+          unzip clpplus.zip -d clpplus
+
+          # Move CLPPlus binary to a location in PATH
+          mv clpplus/* /usr/local/bin/
+
+          # Check version
+          clpplus -v > clpplus_version.txt
+
+      - name: Display CLPPlus Version
+        run: cat clpplus_version.txt
 
       - name: Install libpython3.8
         run: |
